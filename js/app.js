@@ -66,6 +66,29 @@ let login = () => {
         borderColor('passId');
     }
 
+    // cannot empty
+    let userMessage = document.querySelector('#userMessage');
+    if (user.value == "") {
+        userMessage.style.display = "block";
+        userMessage.textContent = "Username cannot empty";
+        userMessage.style.color = 'red';
+    }else {
+        userMessage.style.display = "block";
+        userMessage.textContent = "Invalid username";
+        userMessage.style.color = 'orange';
+    }
+
+    let passMessage = document.querySelector('#passMessage');
+    if (pass.value == "") {
+        passMessage.style.display = "block";
+        passMessage.textContent = "Password cannot empty";
+        passMessage.style.color = 'red';
+    }else {
+        passMessage.style.display = "block";
+        passMessage.textContent = "Invalid password";
+        passMessage.style.color = 'orange';
+    }
+
     // clear
     user.value = "";
     pass.value = "";
