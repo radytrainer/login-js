@@ -66,7 +66,7 @@ let login = () => {
 
 
 let isLogin = () => {
-    if (sessionStorage.length > 1) {
+    if (sessionStorage.length > 0) {
         showOrHide('#menu', 'block');
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "none");
@@ -75,7 +75,7 @@ let isLogin = () => {
 }
 
 let isLogout = () => {
-    if (sessionStorage.length > 1) {
+    if (sessionStorage.length > 0) {
         sessionStorage.clear();
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "block");
