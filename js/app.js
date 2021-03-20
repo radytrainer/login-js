@@ -113,6 +113,8 @@ let isLogout = () => {
         
         menu.style.display = "flex";
     }
+    userMessage.style.display = "none";
+    passMessage.style.display = "none";
     showOrHide('#menu', 'none');
 }
 
