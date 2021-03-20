@@ -1,6 +1,6 @@
 let showOrHide = (attr, status) => document.querySelector(attr).style.display = status;
 
-let borderColor = (id) => document.querySelector('#' + id).style.border = "1px solid red";
+let borderColor = (id, color) => document.querySelector('#' + id).style.border = "1px solid " + color;
 
 let registerForm = () => {
     showOrHide(".register-container", "block");
@@ -41,6 +41,7 @@ let login = () => {
     let user = document.querySelector('#userId');
     let pass = document.querySelector('#passId');
     let menu = document.querySelector('#menu');
+    let displayName = document.querySelector('#displayName');
 
     // get user form local storage
     let isMatch = false;
@@ -48,7 +49,7 @@ let login = () => {
     for (let i = 0; i < size; i++) {
         let data = localStorage.getItem('id-' + i);
         let userObject = JSON.parse(data);
-        console.log(userObject.username);
+        displayName.textContent = userObject.username;
         if (userObject.username === user.value && userObject.password === pass.value) {
             isMatch = true;
             sessionStorage.setItem(userObject.username, userObject.password);
@@ -62,8 +63,8 @@ let login = () => {
         menu.style.display = "flex";
     }else {
         // window.confirm('Username and password not correct!');
-        borderColor('userId');
-        borderColor('passId');
+        borderColor('userId', 'red');
+        borderColor('passId', 'red');
     }
 
     // cannot empty
@@ -115,6 +116,8 @@ let isLogout = () => {
     }
     userMessage.style.display = "none";
     passMessage.style.display = "none";
+    borderColor('userId', 'grey');
+    borderColor('passId', 'grey');
     showOrHide('#menu', 'none');
 }
 
