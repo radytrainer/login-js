@@ -135,7 +135,6 @@ let isLogout = () => {
     showOrHide('#menu', 'none');
 }
 
-let clearUser = () => sessionStorage.clear();
 
 let btnCreate = document.querySelector('#createId');
 let btnRegister = document.querySelector('#registerId');
@@ -156,11 +155,5 @@ btnLogin.addEventListener('click', (e) => {
 
 logout.addEventListener('click', isLogout);
 
-
-btnClearUser.addEventListener('click', (e) => {
-    clearUser();
-    location.reload();
-    e.preventDefault();
-});
 
 isLogin();
