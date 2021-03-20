@@ -70,3 +70,20 @@ span {
 #displayName {
     text-transform: uppercase;
 }
+
+.container-app {
+    width: 40%;
+    margin: auto;
+    background: #fff;
+    padding: 10px;
+    margin-top: 100px;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+    display: none;
+}
+.container-app h1 {
+    color: orange;
+    opacity: 0.8;
+    
+}

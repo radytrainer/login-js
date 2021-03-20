@@ -58,6 +58,7 @@ let login = () => {
 
     if (isMatch) {
         showOrHide('#menu', 'block');
+        showOrHide('.container-app', 'block');
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "none");
         menu.style.display = "flex";
@@ -99,10 +100,11 @@ let login = () => {
 
 let isLogin = () => {
     let displayName = document.querySelector('#displayName');
-    
+    let welcome = document.querySelector('h1');
     let output = "";
     if (sessionStorage.length > 0) {
         showOrHide('#menu', 'block');
+        showOrHide('.container-app', 'block');
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "none");
         menu.style.display = "flex";
@@ -116,6 +118,7 @@ let isLogin = () => {
     }
     
     displayName.textContent = output;
+    welcome.textContent = "Welcome ! " + output;
 }
 let isLogout = () => {
     if (sessionStorage.length > 0) {
@@ -132,10 +135,14 @@ let isLogout = () => {
     showOrHide('#menu', 'none');
 }
 
+let clearUser = () => sessionStorage.clear();
+
 let btnCreate = document.querySelector('#createId');
 let btnRegister = document.querySelector('#registerId');
 let btnLogin = document.querySelector('#loginId');
 let logout = document.querySelector('#logout');
+let btnClearUser = document.querySelector('#clearUser');
+
 
 
 // add event
@@ -143,9 +150,17 @@ btnCreate.addEventListener('click', registerForm);
 btnRegister.addEventListener('click', addUser);
 btnLogin.addEventListener('click', (e) => {
     login();
+    // location.reload();
     e.preventDefault();
 });
 
 logout.addEventListener('click', isLogout);
+
+
+btnClearUser.addEventListener('click', (e) => {
+    clearUser();
+    location.reload();
+    e.preventDefault();
+});
 
 isLogin();
