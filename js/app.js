@@ -41,7 +41,7 @@ let login = () => {
     let user = document.querySelector('#userId');
     let pass = document.querySelector('#passId');
     let menu = document.querySelector('#menu');
-    let displayName = document.querySelector('#displayName');
+
 
     // get user form local storage
     let isMatch = false;
@@ -49,7 +49,7 @@ let login = () => {
     for (let i = 0; i < size; i++) {
         let data = localStorage.getItem('id-' + i);
         let userObject = JSON.parse(data);
-        displayName.textContent = userObject.username;
+
         if (userObject.username === user.value && userObject.password === pass.value) {
             isMatch = true;
             sessionStorage.setItem(userObject.username, userObject.password);
@@ -61,7 +61,7 @@ let login = () => {
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "none");
         menu.style.display = "flex";
-    }else {
+    } else {
         // window.confirm('Username and password not correct!');
         borderColor('userId', 'red');
         borderColor('passId', 'red');
@@ -73,7 +73,7 @@ let login = () => {
         userMessage.style.display = "block";
         userMessage.textContent = "Username cannot empty";
         userMessage.style.color = 'red';
-    }else {
+    } else {
         userMessage.style.display = "block";
         userMessage.textContent = "Invalid username";
         userMessage.style.color = 'orange';
@@ -84,7 +84,7 @@ let login = () => {
         passMessage.style.display = "block";
         passMessage.textContent = "Password cannot empty";
         passMessage.style.color = 'red';
-    }else {
+    } else {
         passMessage.style.display = "block";
         passMessage.textContent = "Invalid password";
         passMessage.style.color = 'orange';
@@ -98,20 +98,31 @@ let login = () => {
 
 
 let isLogin = () => {
+    let displayName = document.querySelector('#displayName');
+    
+    let output = "";
     if (sessionStorage.length > 0) {
         showOrHide('#menu', 'block');
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "none");
         menu.style.display = "flex";
+        for (let i = 0; i < sessionStorage.length; i++) {
+           if (sessionStorage.key(i).length < 25) {
+               output = sessionStorage.key(i);
+           }else {
+               output = "Default User";
+           }
+        }
     }
+    
+    displayName.textContent = output;
 }
-
 let isLogout = () => {
     if (sessionStorage.length > 0) {
         sessionStorage.clear();
         showOrHide(".register-container", "none");
         showOrHide(".login-container", "block");
-        
+
         menu.style.display = "flex";
     }
     userMessage.style.display = "none";

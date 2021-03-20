@@ -67,3 +67,6 @@ span {
     color: red;
     display: none;
 }
+#displayName {
+    text-transform: uppercase;
+}
