@@ -1,5 +1,7 @@
 let showOrHide = (attr, status) => document.querySelector(attr).style.display = status;
 
+let borderColor = (id) => document.querySelector('#' + id).style.border = "1px solid red";
+
 let registerForm = () => {
     showOrHide(".register-container", "block");
     showOrHide(".login-container", "none");
@@ -59,8 +61,14 @@ let login = () => {
         showOrHide(".login-container", "none");
         menu.style.display = "flex";
     }else {
-        window.confirm('Username and password not correct!');
+        // window.confirm('Username and password not correct!');
+        borderColor('userId');
+        borderColor('passId');
     }
+
+    // clear
+    user.value = "";
+    pass.value = "";
 
 }
 
