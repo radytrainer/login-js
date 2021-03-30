@@ -155,5 +155,6 @@ btnLogin.addEventListener('click', (e) => {
 
 logout.addEventListener('click', isLogout);
 
+// login now
 
 isLogin();
